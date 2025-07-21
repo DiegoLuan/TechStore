@@ -1,0 +1,61 @@
+<div class="cart-container">
+      <div class="cart-header">
+        <h1>Carrinho de Compras</h1>
+        <button (click)="goBack()" class="back-button">← Continuar Comprando</button>
+      </div>
+
+      <div class="cart-content" *ngIf="(cartItems$ | async)?.length; else emptyCart">
+        <div class="cart-items">
+          <div *ngFor="let item of cartItems$ | async" class="cart-item">
+            <div class="item-image">
+              <img [src]="item.product.image" [alt]="item.product.name" />
+            </div>
+            <div class="item-details">
+              <h3>{{ item.product.name }}</h3>
+              <p class="item-description">{{ item.product.description }}</p>
+              <div class="item-price">{{ item.product.price | currency:'BRL':'symbol':'1.2-2' }}</div>
+            </div>
+            <div class="item-quantity">
+              <button (click)="decreaseQuantity(item)" class="quantity-btn">−</button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <button (click)="increaseQuantity(item)" class="quantity-btn">+</button>
+            </div>
+            <div class="item-total">
+              {{ (item.product.price * item.quantity) | currency:'BRL':'symbol':'1.2-2' }}
+            </div>
+            <button (click)="removeItem(item.product.id)" class="remove-btn">🗑️</button>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-card">
+            <h3>Resumo do Pedido</h3>
+            <div class="summary-line">
+              <span>Subtotal:</span>
+              <span>{{ totalPrice$ | async | currency:'BRL':'symbol':'1.2-2' }}</span>
+            </div>
+            <div class="summary-line">
+              <span>Frete:</span>
+              <span class="free-shipping">Grátis</span>
+            </div>
+            <div class="summary-line total">
+              <span>Total:</span>
+              <span>{{ totalPrice$ | async | currency:'BRL':'symbol':'1.2-2' }}</span>
+            </div>
+            <button class="checkout-btn">Finalizar Compra</button>
+            <button (click)="clearCart()" class="clear-cart-btn">Limpar Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #emptyCart>
+        <div class="empty-cart">
+          <div class="empty-cart-icon">🛒</div>
+          <h2>Seu carrinho está vazio</h2>
+          <p>Adicione produtos ao carrinho para continuar</p>
+          <button (click)="goBack()" class="continue-shopping-btn">
+            Continuar Comprando
+          </button>
+        </div>
+      </ng-template>
+    </div>

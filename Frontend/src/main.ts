@@ -29,7 +29,7 @@ import { RouterOutlet } from '@angular/router';
     }
   `]
 })
-export class App {}
+export class App { }
 
 bootstrapApplication(App, {
   providers: [

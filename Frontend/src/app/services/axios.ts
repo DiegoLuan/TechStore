@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios, { AxiosInstance } from 'axios';
+import { PagedResponse } from '../../Interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,13 @@ export class AxiosService {
     return response.data ? response.data as T : null;
   }
 
-  // Exemplo de chamada POST
   async post<T>(url: string, data: any): Promise<T> {
     const response = await this.axiosClient.post<T>(url, data);
+    return response.data;
+  }
+
+  async getAllPaged<T>(url: string, page: number, size: number): Promise<PagedResponse<T>> {
+    const response = await this.axiosClient.post<PagedResponse<T>>(`${url}/paged`, { page, size });
     return response.data;
   }
 }

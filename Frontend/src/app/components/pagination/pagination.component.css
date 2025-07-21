@@ -1,0 +1,18 @@
+.pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.pagination-container button {
+    margin: 0 3px;
+    padding: 5px 10px;
+}
+
+.pagination-container button.active {
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+}

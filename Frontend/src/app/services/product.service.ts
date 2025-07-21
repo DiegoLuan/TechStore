@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { AxiosService } from './axios';
+import { PagedResponse } from '../../Interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,10 @@ export class ProductService {
 
   private productsSubject = new BehaviorSubject<Product[]>(this.products);
   products$ = this.productsSubject.asObservable();
+
+  async getProductsPaged(page: number, size: number): Promise<PagedResponse<Product>> {
+    return await this.axiosService.getAllPaged<Product>('/product', page, size);
+  }
 
   async getProducts(): Promise<Product[]> {
     return await this.axiosService.getAll<Product>('/product');

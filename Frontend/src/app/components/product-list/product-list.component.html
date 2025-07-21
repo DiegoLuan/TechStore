@@ -1,39 +1,29 @@
-  <div class="product-list-container">
-      <div class="header">
-        <h1>Produtos</h1>
-        <div class="header-actions">
-          <div class="search-container">
-            <input
-              type="text"
-              placeholder="Buscar produtos..."
-              [(ngModel)]="searchTerm"
-              class="search-input"
-            />
-            <div class="search-icon">🔍</div>
-          </div>
-          <button (click)="addProduct()" class="add-product-btn">
-            + Novo Produto
-          </button>
-        </div>
-      </div>
+<div class="product-list-container">
+  <div class="header">
+    <h1>Produtos</h1>
+    <div class="header-actions">
+      <button (click)="addProduct()" class="add-product-btn">
+        + Novo Produto
+      </button>
+    </div>
+  </div>
 
-      <div class="products-grid">
-        <div 
-          *ngFor="let product of products" 
-          class="product-card"
-          (click)="viewProduct(product.id)"
-        >
-          <div class="product-image">
-            <img [src]="product.image" [alt]="product.name" />
-          </div>
-          <div class="product-info">
-            <h3>{{ product.name }}</h3>
-            <p class="product-description">{{ product.description }}</p>
-            <div class="product-footer">
-              <span class="product-price">{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</span>
-              <span class="product-category">{{ product.type }}</span>
-            </div>
-          </div>
+  <div class="products-grid">
+    <div *ngFor="let product of products" class="product-card" (click)="viewProduct(product.id)">
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.name" />
+      </div>
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-footer">
+          <span class="product-price">{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</span>
+          <span class="product-category">{{ product.type }}</span>
         </div>
       </div>
     </div>
+  </div>
+
+  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" (pageChange)="onPageChange($event)">
+  </app-pagination>
+</div>

@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   searchTerm: string = '';
   totalPages = 1;
   currentPage = 1;
-  pageSize = 5;
+  pageSize = 6;
 
   constructor(
     private productService: ProductService,

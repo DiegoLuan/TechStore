@@ -17,14 +17,12 @@ body {
   line-height: 1.6;
 }
 
-/* Utility classes */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -42,12 +40,10 @@ body {
   background: #a8a8a8;
 }
 
-/* Transições globais */
 * {
   transition: box-shadow 0.3s ease;
 }
 
-/* Botões globais */
 button {
   font-family: inherit;
   cursor: pointer;
@@ -60,7 +56,6 @@ button:focus {
   outline-offset: 2px;
 }
 
-/* Inputs globais */
 input {
   font-family: inherit;
   outline: none;
@@ -70,7 +65,6 @@ input:focus {
   outline: none;
 }
 
-/* Links globais */
 a {
   color: #3b82f6;
   text-decoration: none;
@@ -80,19 +74,18 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
   }
 }
 
-/* Animações */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -103,7 +96,7 @@ a:hover {
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Sombras */
+
 .shadow-sm {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
@@ -116,7 +109,7 @@ a:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Estado de loading */
+
 .loading {
   display: flex;
   justify-content: center;
@@ -126,7 +119,7 @@ a:hover {
   color: #6b7280;
 }
 
-/* Mensagens */
+
 .message {
   padding: 12px 16px;
   border-radius: 8px;

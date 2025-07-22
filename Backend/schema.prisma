@@ -7,6 +7,7 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -17,7 +18,7 @@ model Product {
   name        String
   description String
   price       Float
-  image       String
+  image       String   @db.Text
   createdAt   DateTime @default(now())
   type        String   @default("Computadores")
 }

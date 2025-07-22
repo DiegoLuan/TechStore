@@ -34,7 +34,8 @@ export class ProductController {
             return {
                 message: 'Produto criado com sucesso',
             };
-        } catch {
+        } catch (error) {
+            console.log("error", error)
             throw new HttpException(
                 {
                     message: 'Erro ao criar produto',
